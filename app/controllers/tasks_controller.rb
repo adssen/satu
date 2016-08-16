@@ -5,6 +5,7 @@ class TasksController < ApplicationController
   # GET /tasks.json
   def index
     # @tasks = Task.all
+    @task = Task.new
     @tasks = current_user.tasks
     @to_do = current_user.tasks.where(state: "to_do")
     @doing = current_user.tasks.where(state: "doing")
@@ -69,7 +70,8 @@ class TasksController < ApplicationController
   def change
     @task.update_attributes(state: params[:state])
     respond_to do |format|
-      format.html { redirect_to tasks_path, notice: "Task Update" }
+      format.html { redirect_to tasks_path, notice: "변화되었다." }
+      format.js
     end
   end
 
