@@ -16,10 +16,11 @@
 
 <div class="panel panel-info">
 			<div class="panel-heading">
+			<%= current_user.email %>
 			<%= link_to edit_task_path(task) do %>
 				Created <%= time_ago_in_words( task.created_at ) %> ago
 			<% end %>
-			
+			<%= link_to "<span style='color:red'><i class='fa fa-times' aria-hidden='true'></i></span>".html_safe, task_path(task), method: :delete, data: {confirm: "진짜로 삭제????"}, class: "pull-right" %>
 			</div>
 			<div class="panel-body"><%= task.content %></div>
 			<div class="panel-footer text-center">
